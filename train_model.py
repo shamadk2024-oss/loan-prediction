@@ -412,7 +412,7 @@ def roc_auc(y_true: np.ndarray, y_prob: np.ndarray) -> tuple[float, list, list]:
     fps = np.concatenate([[0.0], fps])
     tpr = tps / (tps[-1] + 1e-12)
     fpr = fps / (fps[-1] + 1e-12)
-    auc = float(abs(np.trapz(tpr, fpr)))
+    auc = float(abs(np.trapzoid(tpr, fpr)))
     return auc, fpr.tolist(), tpr.tolist()
 
 
